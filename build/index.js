@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.default = eventlyjs;
+exports.init = init;
 var jwt = require('jsonwebtoken');
 var events = require('./events');
 
-function eventlyjs(config) {
+function init(config) {
 	var decoded = jwt.decode(config.token);
 	var _config = Object.assign({}, config, { client_id: decoded._id });
 	return {
