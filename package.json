@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "watch \"npm run build\" src",
     "build": "babel src -d build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Should probably write some tests...\"",
     "prepublish": "npm run build",
     "release": "np"
   },
