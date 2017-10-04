@@ -1,6 +1,6 @@
 {
   "name": "eventlyjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Eventlyjs makes it simple to interface with the Evently project",
   "main": "build/index.js",
   "scripts": {
