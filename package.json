@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "watch \"npm run build\" src",
     "build": "babel src -d build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "release": "np"
   },
   "babel": {
     "presets": [
-      "latest"
+      "env"
     ]
   },
   "repository": {
@@ -33,12 +35,11 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "np": "^2.16.0",
     "watch": "^1.0.2"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "jsonwebtoken": "^8.0.1",
-    "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+    "jsonwebtoken": "^8.0.1"
   }
 }

@@ -1,20 +1,21 @@
 'use strict';
 
-var rp = require('request-promise-native');
+var axios = require('axios');
 
 module.exports = function (config) {
 	function join(id, participant) {
 		var options = {
 			method: 'POST',
-			uri: config.url + '/events/' + id + '/participants',
+			url: config.url + '/events/' + id + '/participants',
 			headers: {
 				Authorization: 'Bearer ' + config.token
 			},
-			body: participant,
-			json: true
+			data: participant
 		};
 
-		return rp(options);
+		return axios(options).then(function (res) {
+			return res.data;
+		});
 	};
 
 	return join;

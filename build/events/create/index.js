@@ -1,6 +1,6 @@
 'use strict';
 
-var rp = require('request-promise-native');
+var axios = require('axios');
 
 function composeEvent(client_id, _event) {
 	_event.client_id = client_id;
@@ -11,15 +11,16 @@ module.exports = function (config) {
 	function create(_event) {
 		var options = {
 			method: 'POST',
-			uri: config.url + '/events',
-			body: composeEvent(config.client_id, _event),
-			json: true,
+			url: config.url + '/events',
+			data: composeEvent(config.client_id, _event),
 			headers: {
 				Authorization: 'Bearer ' + config.token
 			}
 		};
 
-		return rp(options);
+		return axios(options).then(function (res) {
+			return res.data;
+		});
 	};
 
 	return create;

@@ -1,18 +1,17 @@
-const rp = require('request-promise-native');
+const axios = require('axios');
 
 module.exports = function (config) {
 	function join (id, participant) {
 		let options = {
 			method: 'POST',
-			uri: `${config.url}/events/${id}/participants`,
+			url: `${config.url}/events/${id}/participants`,
 			headers: {
 				Authorization: 'Bearer ' + config.token
 			},
-			body: participant,
-			json: true
+			data: participant
 		}
 	
-		return rp(options);
+		return axios(options).then(res => res.data);
 	};
 
 	return join;

@@ -1,19 +1,20 @@
 'use strict';
 
-var rp = require('request-promise-native');
+var axios = require('axios');
 
 module.exports = function (config) {
 	function remove(id, event) {
 		var options = {
 			method: 'DELETE',
-			uri: config.url + '/events/' + id,
+			url: config.url + '/events/' + id,
 			headers: {
 				Authorization: 'Bearer ' + config.token
-			},
-			json: true
+			}
 		};
 
-		return rp(options);
+		return axios(options).then(function (res) {
+			return res.data;
+		});
 	};
 
 	return remove;

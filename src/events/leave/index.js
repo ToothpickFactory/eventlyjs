@@ -1,17 +1,16 @@
-const rp = require('request-promise-native');
+const axios = require('axios');
 
 module.exports = function (config) {
 	function leave (id, userId) {
 		let options = {
 			method: 'DELETE',
-			uri: `${config.url}/events/${id}/participants/${userId}`,
+			url: `${config.url}/events/${id}/participants/${userId}`,
 			headers: {
 				Authorization: 'Bearer ' + config.token
-			},
-			json: true
+			}
 		}
 	
-		return rp(options);
+		return axios(options).then(res => res.data);
 	};
 
 	return leave;
